@@ -16,16 +16,16 @@ public class Fish {
     private ScientificName scientificName;
     private String commonName;
     private List<String> otherNames;
-    private String desc;
+    private String description;
     private URI imageUrl;
 
     public Fish() {}
 
-    public Fish(ScientificName scientificName, String commonName, List<String> otherNames, String desc, URI imageUrl) {
+    public Fish(ScientificName scientificName, String commonName, List<String> otherNames, String description, URI imageUrl) {
         this.scientificName = scientificName;
         this.commonName = commonName;
         this.otherNames = otherNames;
-        this.desc = desc;
+        this.description = description;
         this.imageUrl = imageUrl;
     }
 
@@ -61,12 +61,12 @@ public class Fish {
         this.otherNames = otherNames;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public URI getImageUrl() {
@@ -82,12 +82,12 @@ public class Fish {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Fish fish = (Fish) o;
-        return id.equals(fish.id) && scientificName.equals(fish.scientificName) && commonName.equals(fish.commonName) && otherNames.equals(fish.otherNames) && desc.equals(fish.desc) && imageUrl.equals(fish.imageUrl);
+        return id.equals(fish.id) && scientificName.equals(fish.scientificName) && commonName.equals(fish.commonName) && otherNames.equals(fish.otherNames) && description.equals(fish.description) && imageUrl.equals(fish.imageUrl);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, scientificName, commonName, otherNames, desc, imageUrl);
+        return Objects.hash(id, scientificName, commonName, otherNames, description, imageUrl);
     }
 
     @Override
@@ -97,7 +97,7 @@ public class Fish {
                 ", scientificName=" + scientificName +
                 ", commonName='" + commonName + '\'' +
                 ", otherNames=" + otherNames +
-                ", desc='" + desc + '\'' +
+                ", desc='" + description + '\'' +
                 ", imageUrl=" + imageUrl +
                 '}';
     }
