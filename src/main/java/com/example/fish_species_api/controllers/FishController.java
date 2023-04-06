@@ -37,9 +37,27 @@ public class FishController {
         return repository.save(newFish);
     }
 
+    //updates a fish in the database
+    //POST http://localhost:8080/fish-species/id
+    @PutMapping("/{id}")
+    public Fish updateFish(@RequestBody Fish newFish, @PathVariable Long id) {
+        return repository.findById(id)
+                .map(fish -> {
+                  fish.setScientificName(newFish.getScientificName());
+                  fish.setCommonName(newFish.getCommonName());
+                  fish.setDescription(newFish.getDescription());
+                  fish.setImageUrl(newFish.getImageUrl());
+                  fish.setOtherNames(newFish.getOtherNames());
+                  return repository.save(fish);
+                })
+                .orElseGet(() -> {
+                    newFish.setId(id);
+                    return repository.save(newFish);
+                });
+    }
+
     //deletes a fish with a specified id from the database
     //DELETE http://localhost:8080/fish-species/id
-
     @DeleteMapping("/{id}")
     public void deleteFish(@PathVariable Long id) { repository.deleteById(id); }
 }
