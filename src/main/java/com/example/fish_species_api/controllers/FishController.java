@@ -9,28 +9,28 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/fish-species")
+@RequestMapping("/fishspecies")
 public class FishController {
 
     @Autowired
     private FishRepository repository;
 
     //Gets all fish in the database
-    //GET http://localhost:8080/fish-species
+    //GET http://localhost:8080/fishspecies
     @GetMapping
     public List<Fish> getAllFish() {
-        return repository.findAll();
+        return (List<Fish>) repository.findAll();
     }
 
     //Gets a fish with a specific id
-    //GET http://localhost:8080/fish-species/id
+    //GET http://localhost:8080/fishspecies/id
     @GetMapping("/{id}")
     public Fish findById(@PathVariable Long id) {
         return repository.findById(id).orElseThrow();
     }
 
     //adds a fish to the database
-    //POST http://localhost:8080/fish-species
+    //POST http://localhost:8080/fishspecies
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public Fish addFish(@RequestBody Fish newFish) {
@@ -38,7 +38,7 @@ public class FishController {
     }
 
     //updates a fish in the database
-    //POST http://localhost:8080/fish-species/id
+    //POST http://localhost:8080/fishspecies/id
     @PutMapping("/{id}")
     public Fish updateFish(@RequestBody Fish newFish, @PathVariable Long id) {
         return repository.findById(id)
@@ -57,7 +57,7 @@ public class FishController {
     }
 
     //deletes a fish with a specified id from the database
-    //DELETE http://localhost:8080/fish-species/id
+    //DELETE http://localhost:8080/fishspecies/id
     @DeleteMapping("/{id}")
     public void deleteFish(@PathVariable Long id) { repository.deleteById(id); }
 }
